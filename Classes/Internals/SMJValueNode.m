@@ -59,7 +59,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithString:(NSString *)string;
 - (instancetype)initWithJsonObject:(id)jsonObject;
 @end
-
+@interface SMJNullNode ()
+ - (instancetype)initInternal;
+ @end
 @interface SMJPatternNode ()
 - (instancetype)initWithString:(NSString *)string;
 @end
@@ -121,7 +123,7 @@ NS_ASSUME_NONNULL_BEGIN
 	static SMJNullNode *nullNode;
 	
 	dispatch_once(&onceToken, ^{
-		nullNode = [SMJNullNode new];
+        nullNode = [[SMJNullNode alloc] initInternal];
 	});
 	
 	return nullNode;
@@ -362,7 +364,7 @@ NS_ASSUME_NONNULL_BEGIN
 		}
 		else if ([object isKindOfClass:[NSNull class]])
 		{
-			return [SMJNullNode new];
+            return [[SMJNullNode alloc] initInternal];
 		}
 		else if ([object isKindOfClass:[NSArray class]] || [object isKindOfClass:[NSDictionary class]])
 		{
@@ -377,6 +379,12 @@ NS_ASSUME_NONNULL_BEGIN
 	
 	return nil;
 }
+- (instancetype)initInternal
+ {
+     self = [super init];
+
+     return self;
+ }
 
 - (NSString *)stringValue
 {

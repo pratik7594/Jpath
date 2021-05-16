@@ -33,10 +33,10 @@ TODO:
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'Apache', :file => 'LICENSE' }
   s.author           = { 'kedington' => 'kevin.edington@snapito.com' }
-  s.source           = { :git => 'https://github.com/kedington/SMJJSONPath.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/pratik7594/Jpath.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
   s.source_files = 'Classes/**/*.{h,m}'
   
